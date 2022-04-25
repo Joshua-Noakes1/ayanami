@@ -1,6 +1,7 @@
 require('dotenv').config();
 const lcl = require('cli-color'),
-    path = require('path');
+    path = require('path'),
+    loadLang = process.env.lang.toString().split("_")[0].toLowerCase();
 
 function loadLangs(filename) {
     // dev logging
@@ -8,13 +9,13 @@ function loadLangs(filename) {
 
     // load languages and return 
     try {
-        var lang = require(path.join(__dirname, 'langs', `${process.env.XLANG.toString().toLocaleLowerCase()}.json`));
+        var lang = require(path.join(__dirname, 'langs', `${loadLang}.json`));
     } catch (err) {
-        console.log(lcl.red("[Lang - Error]"), `Failed to load language file "${process.env.XLANG.toString().toLocaleLowerCase()}"`, `\n${lcl.red("[Lang - Error]")} ${err.message}`);
+        console.log(lcl.red("[Lang - Error]"), `Failed to load language file "${loadLang}"`, `\n${lcl.red("[Lang - Error]")} ${err.message}`);
         return process.exit(1);
     }
     if (!lang.success) {
-        console.log(lcl.red("[Lang - Error]"), `Failed to load language file "${process.env.XLANG.toString().toLocaleLowerCase()}"`);
+        console.log(lcl.red("[Lang - Error]"), `Failed to load language file "${loadLang}"`);
         return process.exit(1);
     }
 
