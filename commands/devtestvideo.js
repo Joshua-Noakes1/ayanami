@@ -34,7 +34,7 @@ module.exports = {
 
         // Check if TikTok url is valid
         if (parsedURL.hostname.match(/^(?:https?:\/\/)?(?:vm\.)?(?:www\.)?tiktok\.com/gm) == null) { // vm.tiktok.com - Mobile Share URL, www.tiktok.com - Desktop Share URL
-            console.log(lcl.red(langs.CONSOLE_TIKTOK_ERROR), langs.CONSOLE_TIKTOK_ERROR_INVALID_URL);
+            console.log(lcl.red(lcl.red(`[${langs.CONSOLE_SERVICE_TIKTOK} - ${langs.CONSOLE_GENERIC_ERROR}]`)), langs.CONSOLE_TIKTOK_MESSAGE_INVALID_URL);
             const ttInvalidURLEmbed = new MessageEmbed()
                 .setTitle(langs.EMBED_TIKTOK_INVALID_URL_TITLE)
                 .setDescription(langs.EMBED_TIKTOK_INVALID_URL_DESCRIPTION)

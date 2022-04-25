@@ -1,7 +1,7 @@
 require('dotenv').config();
 const lcl = require('cli-color'),
     path = require('path'),
-    loadLang = process.env.lang.toString().split("_")[0].toLowerCase();
+    loadLang = process.env.xlang === undefined ? process.env.lang.toString().split("_")[0].toLowerCase() : process.env.XLANG.toString().toLowerCase();
 
 function loadLangs(filename) {
     // dev logging
